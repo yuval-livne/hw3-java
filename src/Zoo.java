@@ -7,6 +7,21 @@ public class Zoo {
     private final ArrayList <Animal> animalList = new ArrayList<>();
     private final ArrayList<ZooObserver> observers = new ArrayList<>();
 
+    private Zoo(int happinessLevel, int hungryLevel) {
+        this.happinessLevel = happinessLevel;
+        this.hungryLevel = hungryLevel;
+    }
+
+    public static Zoo getInstance() {
+        if (instance == null) {
+            System.out.println("Creating zoo...");
+            instance = new Zoo( 2,3);
+        }
+        else
+            System.out.println("The zoo already exists...");
+
+        return instance;
+    }
 
     public void watchAnimals(){
         if (this.happinessLevel < 5)
@@ -47,35 +62,23 @@ public class Zoo {
             }
         }
 
-        System.out.println("The zoo contains total of " + this.animalList.size() + " animals:");
+        System.out.println("The zoo contains total of " +
+                this.animalList.size() + " animals:");
         System.out.println("- Zebra: " + counterZebra);
         System.out.println("- Unicorn: " + counterUnicorn);
         System.out.println("- Monkey: " + counterMonkey);
         System.out.println("Happiness level: " + this.happinessLevel);
 
         if(this.happinessLevel < 3)
-            System.out.println("The animals are not happy, you should watch them...");
+            System.out.println("The animals are not happy," +
+                    " you should watch them...");
         else
-            System.out.println("The animals are very happy, keep working hard...");
+            System.out.println("The animals are very happy," +
+                    " keep working hard...");
         System.out.println("Hunger level: " + this.hungryLevel);
         if(this.hungryLevel > 3)
-            System.out.println("The animals are hungry, you should feed them...");
-    }
-
-    private Zoo(int happinessLevel, int hungryLevel) {
-        this.happinessLevel = happinessLevel;
-        this.hungryLevel = hungryLevel;
-    }
-
-    public static Zoo getInstance() {
-        if (instance == null) {
-            System.out.println("Creating zoo...");
-            instance = new Zoo( 2,3);
-        }
-        else
-            System.out.println("The zoo already exists...");
-
-        return instance;
+            System.out.println("The animals are hungry," +
+                    " you should feed them...");
     }
 
     public void addObserver(ZooObserver observer){
@@ -84,7 +87,6 @@ public class Zoo {
 
     public void removeObserver(ZooObserver observer){
         this.observers.remove(observer);
-
     }
 
     public void notifyObserver(String message){
@@ -92,10 +94,5 @@ public class Zoo {
         for(ZooObserver observer: this.observers){
             observer.update(message);
         }
-
     }
-
-
-
-
 }
