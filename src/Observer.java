@@ -1,4 +1,4 @@
-public interface Observer {
-    public void update(String message );
+ public interface Observer {
+    void update(String message );
 
 }

@@ -1,12 +1,11 @@
 import java.util.ArrayList;
-import java.util.List;
 
 public class Zoo {
     private static Zoo instance = null;
     private int happinessLevel;
     private int hungryLevel;
-    private ArrayList <Animal> animalList = new ArrayList<>();
-    private ArrayList<ZooObserver> observers = new ArrayList<>();
+    private final ArrayList <Animal> animalList = new ArrayList<>();
+    private final ArrayList<ZooObserver> observers = new ArrayList<>();
 
 
     public void watchAnimals(){
@@ -37,13 +36,13 @@ public class Zoo {
         int counterMonkey = 0;
         int counterUnicorn = 0;
         for(Animal animal: this.animalList ){
-            if( animal.getName() == "Zebra"){
+            if( animal.getName().equals("Zebra")){
                 counterZebra++;
             }
-            if( animal.getName() ==  "Monkey"){
+            if( animal.getName().equals("Monkey")){
                 counterMonkey++;
             }
-            if( animal.getName() == "Unicorn"){
+            if( animal.getName().equals("Unicorn")){
                 counterUnicorn++;
             }
         }
@@ -88,10 +87,10 @@ public class Zoo {
 
     }
 
-    public void notifyObserver(String massege){
+    public void notifyObserver(String message){
         System.out.println("Notifying observers:");
         for(ZooObserver observer: this.observers){
-            observer.update(massege);
+            observer.update(message);
         }
 
     }
