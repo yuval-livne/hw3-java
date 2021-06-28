@@ -20,10 +20,6 @@ public  class Animal {
             System.out.println("The monkey is hanging on trees...");
         if (this.name == "Unicorn")
             System.out.println("The unicorn is flying...");
-
-
-
-
     }
 
     public String getName(){
