@@ -1,9 +1,11 @@
+/** class animal */
 public  class Animal {
     private final String name;
 
     public Animal(String name){
         this.name = name;
     }
+    /** this part describe the food of the animal */
     public void eat(){
         if (this.name.equals("Zebra"))
             System.out.println("The zebra is eating grass...");
@@ -12,7 +14,7 @@ public  class Animal {
         if (this.name.equals("Unicorn"))
             System.out.println("The unicorn is eating rainbow cakes...");
     }
-
+    /** this part describe the actions of the animal */
     public void participatedInShow(){
         if (this.name.equals("Zebra"))
             System.out.println("The zebra is running...");

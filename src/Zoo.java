@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 
+/** the class of the zoo */
 public class Zoo {
     private static Zoo instance = null;
     private int happinessLevel;
@@ -11,7 +12,7 @@ public class Zoo {
         this.happinessLevel = happinessLevel;
         this.hungryLevel = hungryLevel;
     }
-
+    /** using the singleton method  */
     public static Zoo getInstance() {
         if (instance == null) {
             System.out.println("Creating zoo...");
@@ -22,7 +23,7 @@ public class Zoo {
 
         return instance;
     }
-
+    /** check conditions of happiness and update them */
     public void watchAnimals(){
         if (this.happinessLevel < 5)
             this.happinessLevel++;
@@ -32,7 +33,7 @@ public class Zoo {
             animal.participatedInShow();
         notifyObserver("The animals are being watched");
     }
-
+    /** check conditions of hunger and update them */
     public void feedAnimals(){
         if(this.hungryLevel > 1)
             this.hungryLevel--;
@@ -41,11 +42,13 @@ public class Zoo {
         notifyObserver("The animals are being fed");
     }
 
+    /** add animal */
     public void addAnimal(Animal animal){
         this.animalList.add( animal);
         notifyObserver(animal.getName() + " has been added to the zoo!");
     }
 
+    /** show the info of the all the animals that in the zoo */
     public void showAnimalsInfo(){
         int counterZebra = 0;
         int counterMonkey = 0;
@@ -81,14 +84,17 @@ public class Zoo {
                     " you should feed them...");
     }
 
+    /** add observer */
     public void addObserver(ZooObserver observer){
         this.observers.add(observer);
     }
 
+    /** remove observer*/
     public void removeObserver(ZooObserver observer){
         this.observers.remove(observer);
     }
 
+    /** notify observer */
     public void notifyObserver(String message){
         System.out.println("Notifying observers:");
         for(ZooObserver observer: this.observers){
